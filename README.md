@@ -37,7 +37,7 @@ function Component3({ handlePropChange }) {
 }
 
 // Child Component that needs the function
-function Component5({ handlePropChange }) {
+function Component4({ handlePropChange }) {
   return (
     <button onClick={() => handlePropChange("New Value")}>Update Parent</button>
   );
@@ -86,7 +86,7 @@ function Component3() {
 }
 
 // Child Component that needs the function
-function Component5() {
+function Component4() {
   const { handlePropChange } = useContext(PropValueContext);
   return (
     <button onClick={() => handlePropChange("New Value")}>Update Parent</button>
