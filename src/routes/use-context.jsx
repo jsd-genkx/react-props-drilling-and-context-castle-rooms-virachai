@@ -19,7 +19,7 @@ export default function ToUseContext() {
         <p> &nbsp;</p>
         <div>
           <button onClick={() => setPropValue("Use Context")}>
-            Use Context on Top Component
+            setPropValue on Top Component
           </button>
         </div>
         <p> &nbsp;</p>

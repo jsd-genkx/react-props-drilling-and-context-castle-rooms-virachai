@@ -28,7 +28,7 @@ export default function NoContext() {
       <p> &nbsp;</p>
       <div>
         <button onClick={() => setPropValue("No Context")}>
-          No Context on Top Component
+          setPropValue on Top Component
         </button>
       </div>
       <p> &nbsp;</p>
