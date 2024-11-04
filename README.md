@@ -1,12 +1,16 @@
 # React State Management: Props vs Context API
 
+## by 39_Virachai
+
 This repository demonstrates two different approaches to managing state updates from deeply nested child components to a parent component in React:
+
 1. Traditional prop drilling
 2. Context API
 
 ## Problem Statement
 
 Often in React applications, we need to update state in a parent component from a deeply nested child component. This creates two common challenges:
+
 - Passing props through multiple intermediate components that don't need them
 - Maintaining clean and manageable code structure
 
@@ -19,10 +23,8 @@ Often in React applications, we need to update state in a parent component from 
 function NoContext() {
   const [propValue, setPropValue] = useState("No Context");
   const handlePropChange = (newValue) => setPropValue(newValue);
-  
-  return (
-    <Component2 handlePropChange={handlePropChange} />
-  );
+
+  return <Component2 handlePropChange={handlePropChange} />;
 }
 
 // Intermediate Components
@@ -37,20 +39,20 @@ function Component3({ handlePropChange }) {
 // Child Component that needs the function
 function Component5({ handlePropChange }) {
   return (
-    <button onClick={() => handlePropChange("New Value")}>
-      Update Parent
-    </button>
+    <button onClick={() => handlePropChange("New Value")}>Update Parent</button>
   );
 }
 ```
 
 #### Pros of Prop Drilling:
+
 - Explicit data flow - easy to track where props come from
 - No additional setup required
 - Better for small component trees
 - More predictable behavior
 
 #### Cons of Prop Drilling:
+
 - Props must pass through every intermediate component
 - Components become tightly coupled
 - Code becomes harder to maintain as the app grows
@@ -66,7 +68,7 @@ const PropValueContext = createContext();
 function WithContext() {
   const [propValue, setPropValue] = useState("Use Context");
   const handlePropChange = (newValue) => setPropValue(newValue);
-  
+
   return (
     <PropValueContext.Provider value={{ propValue, handlePropChange }}>
       <Component2 />
@@ -87,14 +89,13 @@ function Component3() {
 function Component5() {
   const { handlePropChange } = useContext(PropValueContext);
   return (
-    <button onClick={() => handlePropChange("New Value")}>
-      Update Parent
-    </button>
+    <button onClick={() => handlePropChange("New Value")}>Update Parent</button>
   );
 }
 ```
 
 #### Pros of Context API:
+
 - Eliminates prop drilling
 - Cleaner component interfaces
 - More maintainable code
@@ -102,6 +103,7 @@ function Component5() {
 - Intermediate components stay simple
 
 #### Cons of Context API:
+
 - Slightly more setup required
 - Can make component reuse more difficult
 - Might be overkill for small applications
@@ -110,12 +112,14 @@ function Component5() {
 ## When to Use Each Approach
 
 ### Use Prop Drilling When:
+
 - You have a shallow component tree (2-3 levels)
 - The data flow should be explicit
 - You want to maintain high component reusability
 - You're building a small application
 
 ### Use Context API When:
+
 - You have a deep component tree (4+ levels)
 - Many components need the same data
 - Prop drilling becomes unmanageable
