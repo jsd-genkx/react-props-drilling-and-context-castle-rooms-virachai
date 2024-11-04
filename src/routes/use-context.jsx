@@ -6,7 +6,7 @@ const PropValueContext = createContext();
 
 // Top Component
 export default function ToUseContext() {
-  const [propValue, setPropValue] = useState("No Context");
+  const [propValue, setPropValue] = useState("Use Context");
 
   const handlePropChange = (newValue) => {
     setPropValue(newValue);
@@ -55,7 +55,7 @@ function Component5() {
   return (
     <div>
       <button onClick={handleClick}>
-        Update Top Component from Component5
+        Update Top Component from Component5 with useContext
       </button>
     </div>
   );
